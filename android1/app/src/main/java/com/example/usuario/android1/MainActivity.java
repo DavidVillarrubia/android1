@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.view.View;
@@ -27,13 +29,18 @@ public class MainActivity extends AppCompatActivity {
     private Spinner cmbOpciones1;
     public ListView lista;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        String cambio="ESTE ES UNO DE LOS CAMBIOS PRODUCIDOS";
-
+        setContentView(R.layout.activity_main);
+        findViewById(R.id.button1);
+        boton1=(Button)findViewById(R.id.button1);
+        boton2=(Button)findViewById(R.id.button2);
+        texto=(TextView)findViewById(R.id.textView);
+        check=(CheckBox)findViewById(R.id.checkBox);
+        radio1=(RadioButton)findViewById(R.id.radioButton1);
+        radio2=(RadioButton)findViewById(R.id.radioButton2);
 
         final String[] datos =
                 new String[]{"Elem1","Elem2","Elem3","Elem4","Elem5"};
@@ -48,23 +55,24 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adaptador1 =
                 new ArrayAdapter<String>(this,
                         android.R.layout.simple_spinner_item, datos);
-        //AQUÍ SE HAN BORRADO DATOS ----
+        ArrayAdapter<CharSequence> adapter =
+                ArrayAdapter.createFromResource(this,
+                        R.array.valores_array,
+                        android.R.layout.simple_spinner_item);
+        cmbOpciones1= (Spinner)findViewById(R.id.CmbOpciones1);
         adaptador1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cmbOpciones1.setAdapter(adaptador1);
 
         //LISTAS LISTVIEW
-        ArrayAdapter<String> adaptador3 =
-                new ArrayAdapter<String>(this,
-                        android.R.layout.simple_list_item_1, datos);
-        //lista=(ListView)findViewById(R.id.LstOpciones);
-        //lista.setAdapter(adaptador);
-
+        ArrayAdapter<String> adaptador3 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
         //AdaptadorTitulares adaptador3 = new AdaptadorTitulares(this, datos);
-
         lista = (ListView)findViewById(R.id.LstOpciones);
-
         lista.setAdapter(adaptador);
 
+        //TOOLBAR
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
+        setSupportActionBar(toolbar);
 
         //PESTAÑAS
         Resources res = getResources();
