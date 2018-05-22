@@ -30,14 +30,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        findViewById(R.id.button1);
-        boton1=(Button)findViewById(R.id.button1);
-        boton2=(Button)findViewById(R.id.button2);
-        texto=(TextView)findViewById(R.id.textView);
-        check=(CheckBox)findViewById(R.id.checkBox);
-        radio1=(RadioButton)findViewById(R.id.radioButton1);
-        radio2=(RadioButton)findViewById(R.id.radioButton2);
+
+
+        String cambio="ESTE ES UNO DE LOS CAMBIOS PRODUCIDOS";
+
 
         final String[] datos =
                 new String[]{"Elem1","Elem2","Elem3","Elem4","Elem5"};
@@ -52,11 +48,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adaptador1 =
                 new ArrayAdapter<String>(this,
                         android.R.layout.simple_spinner_item, datos);
-        ArrayAdapter<CharSequence> adapter =
-                ArrayAdapter.createFromResource(this,
-                        R.array.valores_array,
-                        android.R.layout.simple_spinner_item);
-        cmbOpciones1= (Spinner)findViewById(R.id.CmbOpciones1);
+        //AQUÍ SE HAN BORRADO DATOS ----
         adaptador1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cmbOpciones1.setAdapter(adaptador1);
 
